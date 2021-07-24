@@ -27,11 +27,11 @@
         {
           "name": "ForgeWrapper-1.5.1.jar",
           "url": "ForgeWrapper-1.5.1.jar",
-          "size": 29891,
-          "sha512": "17abe06f2771eb8bc85eb07e6b45536cf94bfbc60f6653359d9a3d18dd4b28a9f28c78016628b2829fb64991d01100fe15dd0163980fdeaab6434b9f42f818a4",
-          "sha256": "d7fd8846111015f1ce40a3d5d2475429d18bb51a11c3777a780a46ce2ebe78e0",
-          "sha1": "514a6446be86f7874bc87636434cba20823f50fa",
-          "md5": "3d414b0d36ab4d1d5d1382d6199139c7"
+          "size": 29892,
+          "sha512": "a64e471f5f7487cace9cf7d531a554edc1977b9e5f4fc28ddcfa7a8ec4e2de9af0f5fd9aa8466eab596222f5fd3b6c43e029234498132f61eabbb386877b9f34",
+          "sha256": "d608aad3a92d69c1c9f93c019d671b7242a4383451edeb728bb2482d2b900164",
+          "sha1": "90104e9aaa8fbedf6c3d1f6d0b90cabce080b5a9",
+          "md5": "919e2d600b673fce7be6ac2d0ed1b62f"
         }
       ]
     },
@@ -48,11 +48,11 @@
         {
           "name": "ForgeWrapper-1.5.1.jar",
           "url": "ForgeWrapper-1.5.1.jar",
-          "size": 29891,
-          "sha512": "17abe06f2771eb8bc85eb07e6b45536cf94bfbc60f6653359d9a3d18dd4b28a9f28c78016628b2829fb64991d01100fe15dd0163980fdeaab6434b9f42f818a4",
-          "sha256": "d7fd8846111015f1ce40a3d5d2475429d18bb51a11c3777a780a46ce2ebe78e0",
-          "sha1": "514a6446be86f7874bc87636434cba20823f50fa",
-          "md5": "3d414b0d36ab4d1d5d1382d6199139c7"
+          "size": 29892,
+          "sha512": "a64e471f5f7487cace9cf7d531a554edc1977b9e5f4fc28ddcfa7a8ec4e2de9af0f5fd9aa8466eab596222f5fd3b6c43e029234498132f61eabbb386877b9f34",
+          "sha256": "d608aad3a92d69c1c9f93c019d671b7242a4383451edeb728bb2482d2b900164",
+          "sha1": "90104e9aaa8fbedf6c3d1f6d0b90cabce080b5a9",
+          "md5": "919e2d600b673fce7be6ac2d0ed1b62f"
         }
       ]
     },
@@ -69,10 +69,10 @@
           "name": "ForgeWrapper-1.5.1-sources.jar",
           "url": "ForgeWrapper-1.5.1-sources.jar",
           "size": 11159,
-          "sha512": "cee4b89988487c61b0450f07ab031a555eabee6ee189da45d8974f2b06f05a0d41a65ceb3c55008f7d56b45336cbacd9997a6726d9232205a2e4b33f02d2e4d4",
-          "sha256": "9e4d607a11dbc62e3cd907a71cc9d6c712c097f65baee65b82961256236d0efc",
-          "sha1": "e7e7c8fe4e5bb3fa0b6aa05d79f1aa28a55c8de4",
-          "md5": "c49c49c9ed11cea812fb6fd355e13dcf"
+          "sha512": "fac731ea67b9d44822afbc3d21346be4efef68e6445124195566674d48c180c7e1143bffe9b985a890f8631173356d1bac2e72b94d30f0fe89242a312abfe60f",
+          "sha256": "6d8efdbda45653934d0a28797987c8783710026f7c42b3ea5e2c3f7117a7af70",
+          "sha1": "5ecf7d1102a4a0e82ad82b4a5499130c0bf7102b",
+          "md5": "41889b31cb86400ad7053037e006407a"
         }
       ]
     }
