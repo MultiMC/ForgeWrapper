@@ -91,10 +91,5 @@ publishing {
 tasks.publish.dependsOn build
 
 static String getVersionSuffix() {
-    if (System.getenv("IS_PUBLICATION") != null) {
-        return ""
-    } else if (System.getenv("GITHUB_RUN_NUMBER") != null && System.getenv("GITHUB_SHA") != null) {
-        return "-s." + System.getenv("GITHUB_RUN_NUMBER") + "-" + System.getenv("GITHUB_SHA").substring(0, 7)
-    }
-    return "-LOCAL"
+    return ""
 }
