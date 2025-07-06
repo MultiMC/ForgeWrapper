@@ -11,7 +11,7 @@ compileJava {
     sourceCompatibility = targetCompatibility = 1.8
 }
 
-version = "${fw_version}${-> getVersionSuffix()}"
+version = (findProperty('version') == 'unspecified') ? "LOCAL" : version
 group = "io.github.zekerzhayard"
 archivesBaseName = rootProject.name
 
@@ -81,10 +81,3 @@ publishing {
     }
 }
 tasks.publish.dependsOn build
-
-static String getVersionSuffix() {
-    if (System.getenv("IS_PUBLICATION") != null || System.getenv("GITHUB_ACTIONS") == "true")
-        return new SimpleDateFormat("-yyyy-MM-dd").format(new Date())
-
-    return "-LOCAL"
-}

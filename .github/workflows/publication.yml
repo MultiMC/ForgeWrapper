@@ -3,13 +3,19 @@ name: Publication
 on:
   push:
     tags:
-      - "*"
+      - "mmc*"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # Determine version based on the tag
+      - id: version
+        name: Write release version
+        run: |
+          echo Version: $GITHUB_REF_NAME
+          echo "version=$GITHUB_REF_NAME" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v4
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -20,18 +26,10 @@ jobs:
       - name: Build with Gradle
         env:
           IS_PUBLICATION: true
+          VERSION: ${{ steps.version.outputs.version }}
         run: |
-          # git clone -b maven https://github.com/ZekerZhayard/ForgeWrapper.git ./build/maven
-          # rm -rf ./build/maven/.git/*
           chmod +x ./gradlew
-          ./gradlew publish -iS
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Package
-          path: build/libs
-      - name: Get tag version
-        id: get_version
-        uses: olegtarasov/get-tag@v2.1
+          ./gradlew publish -iS -Pversion=${VERSION}
       - uses: actions/upload-artifact@v4
         with:
           name: Package
@@ -53,8 +51,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           asset_paths: '["./build/libs/*"]'
-      # - name: Upload to Maven
-      #   uses: JamesIves/github-pages-deploy-action@4.1.4
-      #   with:
-      #     branch: maven
-      #     folder: build/maven
