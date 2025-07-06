@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat
 
 plugins {
     id "java"
@@ -15,9 +16,6 @@ group = "io.github.zekerzhayard"
 archivesBaseName = rootProject.name
 
 configurations {
-    provided {
-        implementation.extendsFrom provided
-    }
     multirelase {
         implementation.extendsFrom multirelase
     }
@@ -37,8 +35,6 @@ dependencies {
     compileOnly "net.minecraftforge:installer:2.2.7"
     compileOnly "net.sf.jopt-simple:jopt-simple:5.0.4"
 
-    provided project(":common")
-    provided project(":legacy")
     multirelase project(":jigsaw")
 }
 
@@ -59,10 +55,6 @@ jar {
         "Multi-Release": "true",
         "GitCommit": String.valueOf(System.getenv("GITHUB_SHA"))
     ])
-
-    from configurations.provided.files.collect {
-        zipTree(it)
-    }
 
     into "META-INF/versions/9", {
         from configurations.multirelase.files.collect {
@@ -91,5 +83,8 @@ publishing {
 tasks.publish.dependsOn build
 
 static String getVersionSuffix() {
-    return ""
+    if (System.getenv("IS_PUBLICATION") != null || System.getenv("GITHUB_ACTIONS") == "true")
+        return new SimpleDateFormat("-yyyy-MM-dd").format(new Date())
+
+    return "-LOCAL"
 }

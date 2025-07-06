@@ -3,18 +3,19 @@ name: Publication
 on:
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
-          java-version: '8.0.312'
+          distribution: "temurin"
+          java-version: "8.0.312"
           architecture: x64
       - name: Build with Gradle
         env:
@@ -24,14 +25,14 @@ jobs:
           rm -rf ./build/maven/.git/*
           chmod +x ./gradlew
           ./gradlew publish -iS
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Package
           path: build/libs
       - name: Get tag version
         id: get_version
         uses: olegtarasov/get-tag@v2.1
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Package
           path: build/libs
@@ -43,7 +44,7 @@ jobs:
         with:
           tag_name: ${{ steps.get_version.outputs.tag }}
           release_name: ${{ steps.get_version.outputs.tag }}
-          body: ''
+          body: ""
           draft: false
           prerelease: false
       - name: Upload release binaries
