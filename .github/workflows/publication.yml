@@ -21,8 +21,8 @@ jobs:
         env:
           IS_PUBLICATION: true
         run: |
-          git clone -b maven https://github.com/ZekerZhayard/ForgeWrapper.git ./build/maven
-          rm -rf ./build/maven/.git/*
+          # git clone -b maven https://github.com/ZekerZhayard/ForgeWrapper.git ./build/maven
+          # rm -rf ./build/maven/.git/*
           chmod +x ./gradlew
           ./gradlew publish -iS
       - uses: actions/upload-artifact@v4
@@ -53,8 +53,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           asset_paths: '["./build/libs/*"]'
-      - name: Upload to Maven
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: maven
-          folder: build/maven
+      # - name: Upload to Maven
+      #   uses: JamesIves/github-pages-deploy-action@4.1.4
+      #   with:
+      #     branch: maven
+      #     folder: build/maven
