@@ -2,6 +2,7 @@ package io.github.zekerzhayard.forgewrapper.installer.detector;
 
 import java.net.URL;
 import java.net.URISyntaxException;
+import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -30,19 +31,24 @@ public interface IFileDetector {
         try {
             URL launcherLocation = null;
             String[] classNames = {
-                "cpw.mods.modlauncher.Launcher",
-                "net.neoforged.fml.loading.FMLLoader"
+                "cpw/mods/modlauncher/Launcher.class",
+                "net/neoforged/fml/loading/FMLLoader.class"
             };
 
-            for (String className : classNames) {
-                try {
-                    Class<?> clazz = Class.forName(className);
-                    // Return the location of the loaded class
-                    if (clazz.getProtectionDomain().getCodeSource() != null) {
-                        launcherLocation = clazz.getProtectionDomain().getCodeSource().getLocation();
+            ClassLoader cl = Thread.currentThread().getContextClassLoader();
+            for (String classResource : classNames) {
+                URL url = cl.getResource(classResource);
+                if (url != null) {
+                    String path = url.toString();
+                    if (path.startsWith("jar:") && path.contains("!")) {
+                        path = path.substring(4, path.indexOf('!'));
+                        try {
+                            launcherLocation = new URL(path);
+                            break;
+                        } catch (MalformedURLException e) {
+                              // ignore and try next
+                        }
                     }
-                } catch (ClassNotFoundException e) {
-                    // ignore and try next
                 }
             }
 
